@@ -1,6 +1,8 @@
 #rp-ig {
-  position: fixed; right: 20px; bottom: 20px; z-index: 2147483000;
-  display: flex; flex-direction: column; align-items: flex-end; gap: 8px;
+  /* Sağ üst; gönderi penceresinin kapatma (✕) düğmesine binmesin diye biraz içeride. */
+  position: fixed; right: 72px; top: 14px; z-index: 2147483000;
+  /* Bildirim düğmenin altında açılsın (DOM'da önce not, sonra düğme var). */
+  display: flex; flex-direction: column-reverse; align-items: flex-end; gap: 8px;
   font: 14px/1.4 "Segoe UI", system-ui, -apple-system, Roboto, sans-serif;
 }
 #rp-ig[hidden], #rp-ig [hidden] { display: none !important; }
