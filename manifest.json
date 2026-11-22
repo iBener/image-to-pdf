@@ -1,0 +1,47 @@
+{
+  "manifest_version": 3,
+  "name": "Resimden PDF",
+  "version": "1.1.0",
+  "description": "Bilgisayardaki resimleri ve Instagram gönderilerini sırala, kırp, sayfaya oturt ve PDF'e dönüştür.",
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_title": "Resimden PDF'i aç",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png"
+    }
+  },
+  "background": {
+    "service_worker": "ext/background.js"
+  },
+  "permissions": ["storage"],
+  "host_permissions": [
+    "https://*.cdninstagram.com/*",
+    "https://*.fbcdn.net/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["ext/ig-main.js"],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": ["https://www.instagram.com/*"],
+      "js": ["ext/ig-content.js"],
+      "css": ["ext/ig-content.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "sandbox": {
+    "pages": ["ext/heic-sandbox.html"]
+  },
+  "content_security_policy": {
+    "sandbox": "sandbox allow-scripts; script-src 'self' 'unsafe-eval' blob:; worker-src 'self' blob:; child-src 'self' blob:; object-src 'none'"
+  }
+}

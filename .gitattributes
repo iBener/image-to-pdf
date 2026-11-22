@@ -1,0 +1,4 @@
+* text=auto
+*.png binary
+# Hazır kütüphaneler: diff'lerde gösterme
+lib/** -diff linguist-vendored
